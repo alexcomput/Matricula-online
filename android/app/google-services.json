@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "150124506733",
+    "firebase_url": "https://venda-online-7de70.firebaseio.com",
+    "project_id": "venda-online-7de70",
+    "storage_bucket": "venda-online-7de70.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:150124506733:android:2beb77043d0a6346475964",
+        "android_client_info": {
+          "package_name": "com.sale.online"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "150124506733-jd58i7c22oaigtellj0ttaoa8l6ivoqm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sale.online",
+            "certificate_hash": "1fc00b2837eba0202f0e7875d5d287382205bb25"
+          }
+        },
+        {
+          "client_id": "150124506733-h85e6i1mmofhnob8csljafda37cot6c6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBluNJCq6C8f6sFzHZOTVpLgY2ypqIhdJ0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "150124506733-h85e6i1mmofhnob8csljafda37cot6c6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
