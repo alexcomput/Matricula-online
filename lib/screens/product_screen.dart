@@ -1,6 +1,11 @@
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter/material.dart';
+import 'package:online/data/cart_data.dart';
 import 'package:online/data/product_data.dart';
+import 'package:online/models/cart_model.dart';
+import 'package:online/models/user_model.dart';
+import 'package:online/screens/cart_screen.dart';
+import 'package:online/screens/login_screen.dart';
 
 class ProductScreen extends StatefulWidget {
   final ProductData productData;
@@ -113,9 +118,27 @@ class _ProductScreenState extends State<ProductScreen> {
                 SizedBox(
                   height: 44.0,
                   child: RaisedButton(
-                    onPressed: sizeSelect != null ? () {} : null,
+                    onPressed: sizeSelect != null
+                        ? () {
+                            if (UserModel.of(context).isLoggedIn()) {
+                              CartProduct carProdu = CartProduct();
+                              carProdu.size = sizeSelect;
+                              carProdu.quantity = 1;
+                              carProdu.pid = product.id;
+                              CartModel.of(context).addCardItem(carProdu);
+
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => CartSreen()));
+                            } else {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => LoginScreen()));
+                            }
+                          }
+                        : null,
                     child: Text(
-                      "Matrícular",
+                      UserModel.of(context).isLoggedIn()
+                          ? "Matrícular"
+                          : "Entre para Matrícular",
                       style: TextStyle(fontSize: 18.0),
                     ),
                     color: primaryColor,

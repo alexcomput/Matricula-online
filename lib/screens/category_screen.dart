@@ -62,20 +62,22 @@ class CategoryScreen extends StatelessWidget {
                         ),
                         itemCount: snap.data.documents.length,
                         itemBuilder: (context, index) {
-                          return ProductTile(
-                              "grid",
-                              ProductData.fromDocument(
-                                  snap.data.documents[index]));
+                          ProductData produDat = ProductData.fromDocument(
+                              snap.data.documents[index]);
+                          produDat.category = this.snapshot.documentID;
+
+                          return ProductTile("grid", produDat);
                         }),
                     /*Container(),*/
                     ListView.builder(
                         padding: EdgeInsets.all(4.0),
                         itemCount: snap.data.documents.length,
                         itemBuilder: (context, index) {
-                          return ProductTile(
-                              "list",
-                              ProductData.fromDocument(
-                                  snap.data.documents[index]));
+                          ProductData produDat = ProductData.fromDocument(
+                              snap.data.documents[index]);
+                          produDat.category = this.snapshot.documentID;
+
+                          return ProductTile("list", produDat);
                         })
                   ],
                 );
