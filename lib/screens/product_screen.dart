@@ -7,7 +7,6 @@ class ProductScreen extends StatefulWidget {
 
   ProductScreen(this.productData);
 
-
   @override
   _ProductScreenState createState() => _ProductScreenState(productData);
 }
@@ -31,7 +30,7 @@ class _ProductScreenState extends State<ProductScreen> {
       body: ListView(
         children: <Widget>[
           AspectRatio(
-              aspectRatio: 1.2,
+              aspectRatio: 1.6,
               child: Padding(
                 padding: EdgeInsets.all(0),
                 child: Carousel(
@@ -95,7 +94,10 @@ class _ProductScreenState extends State<ProductScreen> {
                               Radius.circular(4.0),
                             ),
                             border: Border.all(
-                                color: size == sizeSelect ? primaryColor :  Colors.grey[500] ),
+                                color: size == sizeSelect
+                                    ? primaryColor
+                                    : Colors.grey[500],
+                                width: 3.0),
                           ),
                           width: 50.0,
                           alignment: Alignment.center,
@@ -104,7 +106,33 @@ class _ProductScreenState extends State<ProductScreen> {
                       );
                     }).toList(),
                   ),
-                )
+                ),
+                SizedBox(
+                  height: 16.0,
+                ),
+                SizedBox(
+                  height: 44.0,
+                  child: RaisedButton(
+                    onPressed: sizeSelect != null ? () {} : null,
+                    child: Text(
+                      "Matrícular",
+                      style: TextStyle(fontSize: 18.0),
+                    ),
+                    color: primaryColor,
+                    textColor: Colors.white,
+                  ),
+                ),
+                SizedBox(
+                  height: 16.0,
+                ),
+                Text(
+                  "Descrição",
+                  style: TextStyle(fontSize: 16.0),
+                ),
+                Text(
+                  product.description,
+                  style: TextStyle(fontSize: 16.0),
+                ),
               ],
             ),
           )
