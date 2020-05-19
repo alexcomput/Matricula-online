@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:online/tabs/home_tabs.dart';
+import 'package:online/tabs/order_tab.dart';
 import 'package:online/tabs/products_tab.dart';
 import 'package:online/widgets/cart_button.dart';
 import 'package:online/widgets/custom_drawer.dart';
@@ -26,6 +27,15 @@ class HomeScreem extends StatelessWidget {
             floatingActionButton: CartButton(),
             drawer: CustomDrawer(_pageController),
             body: ProductsTab(),
+          ),
+          Scaffold(
+            appBar: AppBar(
+              title: Text("Meus Cursos"),
+              centerTitle: true,
+            ),
+            floatingActionButton: CartButton(),
+            drawer: CustomDrawer(_pageController),
+            body: OrderTab(),
           ),
         ]);
   }

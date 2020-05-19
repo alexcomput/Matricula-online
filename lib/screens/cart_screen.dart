@@ -3,7 +3,11 @@ import 'package:flutter/rendering.dart';
 import 'package:online/models/cart_model.dart';
 import 'package:online/models/user_model.dart';
 import 'package:online/screens/login_screen.dart';
+import 'package:online/screens/order_screan.dart';
 import 'package:online/tiles/cart_tile.dart';
+import 'package:online/widgets/cart_price.dart';
+import 'package:online/widgets/discount_card.dart';
+import 'package:online/widgets/ship_card.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 class CartSreen extends StatelessWidget {
@@ -44,9 +48,7 @@ class CartSreen extends StatelessWidget {
                   Icon(
                     Icons.remove_shopping_cart,
                     size: 80.0,
-                    color: Theme
-                        .of(context)
-                        .primaryColor,
+                    color: Theme.of(context).primaryColor,
                   ),
                   SizedBox(
                     height: 16.0,
@@ -54,7 +56,7 @@ class CartSreen extends StatelessWidget {
                   Text(
                     "Faça o login para realizar sua matrícula",
                     style:
-                    TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
+                        TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),
                     textAlign: TextAlign.center,
                   ),
                   SizedBox(
@@ -66,9 +68,7 @@ class CartSreen extends StatelessWidget {
                       style: TextStyle(fontSize: 18.0),
                     ),
                     textColor: Colors.white,
-                    color: Theme
-                        .of(context)
-                        .primaryColor,
+                    color: Theme.of(context).primaryColor,
                     onPressed: () {
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => LoginScreen()));
@@ -79,18 +79,29 @@ class CartSreen extends StatelessWidget {
             );
           } else if (model.products == null || model.products.length == 0) {
             return Center(
-              child: Text("Nenhum produto no carrinho",
-              style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
-              textAlign: TextAlign.center,),
+              child: Text(
+                "Nenhum produto no carrinho",
+                style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.center,
+              ),
             );
           } else {
             return ListView(
               children: <Widget>[
                 Column(
-                  children: model.products.map((product){
-                  return CartTile(product);
+                  children: model.products.map((product) {
+                    return CartTile(product);
                   }).toList(),
-                )
+                ),
+                DiscountCard(),
+                ShipCard(),
+                CartPrice(() async {
+                  String orderId = await model.finishOrrder();
+                  if (orderId != null) {
+                    Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(builder: (context) => OrderScreen(orderId)));
+                  }
+                })
               ],
             );
           }

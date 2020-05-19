@@ -16,8 +16,8 @@ class CartProduct {
 
   CartProduct.fromDocument(DocumentSnapshot document) {
     cid = document.documentID;
-    category = document["category"];
-    pid = document["pid"];
+    category = document.data["category"];
+    pid = document.data["pid"];
     quantity = document.data["quantity"];
     size = document.data["size"];
   }
@@ -28,7 +28,7 @@ class CartProduct {
       "pid": this.pid,
       "quantity": this.quantity,
       "size": this.size,
-      //"product": productData.toResumeMap(),
+      "product": productData.toResumedMap(),
     };
   }
 }

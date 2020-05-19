@@ -12,17 +12,17 @@ class ProductData {
   List images;
   List size;
 
-  ProductData.fromDocument(DocumentSnapshot snapshot) {
-    print(snapshot);
-    id = snapshot.documentID;
-    title = snapshot.data["title"];
-    description = snapshot.data["description"];
-    price = snapshot.data["price"];
-    images = snapshot.data["images"];
-    size = snapshot.data["size"];
+  ProductData.fromDocument(DocumentSnapshot document) {
+
+    id = document.documentID;
+    title = document.data["title"];
+    description = document.data["description"];
+    price = document.data["price"];
+    images = document.data["images"];
+    size = document.data["size"];
   }
 
-  Map<String, dynamic> toResumeMap() {
+  Map<String, dynamic> toResumedMap() {
     return {
       "title": title,
       "description": this.description,
