@@ -92,7 +92,7 @@ class CustomDrawer extends StatelessWidget {
               DrawerTile(Icons.location_on, "Encontre uma Loja",
                   this.pageController, 2),
               DrawerTile(
-                  Icons.card_giftcard, "Meus pedidos", this.pageController, 3),
+                  Icons.card_giftcard, "Meus cursos", this.pageController, 3),
               DrawerTile(Icons.help, "Ajuda ", this.pageController, 4),
             ],
           )

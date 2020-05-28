@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:online/tabs/home_tabs.dart';
 import 'package:online/tabs/order_tab.dart';
+import 'package:online/tabs/places_tab.dart';
 import 'package:online/tabs/products_tab.dart';
 import 'package:online/widgets/cart_button.dart';
 import 'package:online/widgets/custom_drawer.dart';
@@ -30,6 +31,15 @@ class HomeScreem extends StatelessWidget {
           ),
           Scaffold(
             appBar: AppBar(
+              title: Text("Faculdades"),
+              centerTitle: true,
+            ),
+            floatingActionButton: CartButton(),
+            drawer: CustomDrawer(_pageController),
+            body: PlacesTab(),
+          ),
+          Scaffold(
+            appBar: AppBar(
               title: Text("Meus Cursos"),
               centerTitle: true,
             ),
@@ -37,6 +47,7 @@ class HomeScreem extends StatelessWidget {
             drawer: CustomDrawer(_pageController),
             body: OrderTab(),
           ),
+
         ]);
   }
 }

@@ -105,7 +105,7 @@ class CartModel extends Model {
     DocumentReference refOrder = await this.getInstanceFirebaseOrders().add({
       "clientId": user.firebaseUser.uid,
       "products":
-          products.map((cartProduct) => cartProduct.topMap()).toString(),
+          products.map((cartProduct) => cartProduct.topMap()).toList(),
       "shipPrice": shipPrice,
       "productsPrice": productsPrice,
       "discount": discount,
